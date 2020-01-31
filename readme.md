@@ -1,1 +1,1 @@
-"lots of oop beeing oop" 
+Lots of code but stil not functional :( 
