@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>localhost</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body id="scrip">
+<main id="man">
+    <form>
+        <h1 onclick="diepte()">stoplicht Opdracht</h1>
+        <input type="button" value="aanzetten" onclick="aanzetten0()">
+        <input type="button" value="knipperen" onclick="knipperen()">
+        <input type="button" value="uitzetten" onclick="uitzetten()">
+        <input type="button" value="starten" onclick="starten()">
+        <input type="button" value="opnieuw" onclick="opnieuw()">
+        <input type="button" value="uit" onclick="zetUit()">
+        <input type="button" value="S" onclick="banana()">
+        <input type="button" value="f" onclick="f()">
+    </form>
+    <aside>
+        <img id="stoplicht" onclick="verander()" src="fotos/uit.png">
+        <img id="stoplicht1" onclick="verander()" src="fotos/uit.png">
+        <img id="stoplicht2" onclick="verander()" src="fotos/uit.png">
+        <img id="stoplicht3" onclick="verander()" src="fotos/uit.png">
+        <img id="cabrio1" src="fotos/cabrio-auto.png">
+        <img id="cabrio2" src="fotos/cabrio-auto.png">
+        <img id="cabrio3" src="fotos/cabrio-auto.png">
+        <img id="cabrio4" src="fotos/cabrio-auto.png">
+        <div class="streep1"></div>
+
+        <div class="streep2"></div>
+        <div class="streep3"></div>
+        <div class="streep4"></div>
+        <img id="grafity" src="fotos/grafity.png">
+        <img id="carrot" src="fotos/carrot.gif">
+    </aside>
+
+
+    <div class="blok1"></div>
+    <div class="blok2"></div>
+    <div class="blok3"></div>
+    <div class="blok4"></div>
+</main>
+<!-- hier begint de rotzooi genaamd Javascript-->
+<script>
+
+
+    var stop1 = document.getElementById("stoplicht");
+    var stop2 = document.getElementById("stoplicht3");
+    var stopautos = false;
+    var stopautos1 = false;
+    var stopautos2 = false;
+    var stopautos3 = false;
+
+
+
+    var werken;
+    var buitenwerking;
+    var speed = 7;
+    var checker ;
+
+
+    //hier begint auto ---
+
+    var auto = document.getElementById("cabrio1");
+    var auto1 = document.getElementById("cabrio2");
+    var auto2 = document.getElementById("cabrio3");
+    var auto3 = document.getElementById("cabrio4");
+
+    auto.style.top = 550 + "px";
+    auto1.style.top = 210 + "px";
+    auto2.style.left = 550 + "px";
+    auto3.style.left = 970 + "px";
+    var rijden = false;
+
+    function starten() {
+
+        checker = setInterval(function () {
+
+            //auto 1
+
+            if
+            (rijden === false) {
+
+
+                if (stopautos === true) {
+                    //doe niksidee
+                } else {
+                    //auto 3
+                    auto2.style.left = (parseInt(auto2.style.left) + speed) + "px";
+                    if (parseInt(auto2.style.left) < 2300) {
+                        console.log("auto3if doet het");
+                        auto2.style.right = 2000 + "px";
+
+
+                    }}
+
+
+
+                    //auto 4
+                    auto3.style.left = (parseInt(auto3.style.left) - speed) + "px";
+
+                    if (parseInt(auto3.style.left) < 0) {
+                        console.log("auto4if doet het");
+                        auto3.style.left = 2300 + "px";
+
+
+                    }
+
+
+
+                if (stopautos3 === true) {
+
+                }
+                else {
+
+                    auto.style.top = (parseInt(auto.style.top) - speed) + "px";
+
+                    if (auto.style.top < -450 + "px") {
+                        auto.style.top = 1100 + "px";
+                    }}
+
+
+                    //auto 2
+                    auto1.style.top = (parseInt(auto1.style.top) + speed) + "px";
+
+                    if (parseInt(auto1.style.top) > innerHeight) {
+                        auto1.style.top = -300 + "px";
+                    }
+
+
+
+            }
+        }, 20);
+    }
+
+
+    function opnieuw() {
+        clearInterval(checker);
+        auto.style.top = 550 + "px";
+        auto1.style.top = 210 + "px";
+        auto2.style.left = 550 + "px";
+        auto3.style.left = 970 + "px";
+    }
+
+    //hier stopt auto ---
+
+    function aanzetten0() {
+        aanzetten1();
+        aanzetten2();
+        werken = setInterval(function () {
+            aanzetten1()
+        }, 12000);
+        werken = setInterval(function () {
+            aanzetten2()
+        }, 12000);
+
+    }
+
+    function aanzetten1() {
+        clearTimeout(buitenwerking);
+        maakRood();
+        werken = setTimeout(maakGroen, 6000);
+        werken = setTimeout(maakGeel, 10000);
+
+    }
+
+    function aanzetten2() {
+        clearTimeout(buitenwerking);
+        maakgroen2();
+        werken = setTimeout(maakGeel2, 4000);
+        werken = setTimeout(maakrood2, 6000);
+
+    }
+
+    function knipperen() {
+
+        clearInterval(werken);
+        maakGeel();
+        maakGeel2();
+        setInterval(function(){
+        maakGeel();
+        maakGeel2();
+        buitenwerking = setTimeout(uitzetten, 500);
+        buitenwerking = setTimeout(knipperen, 1000);
+        },1000)
+
+    }
+
+    function uitzetten() {
+        clearInterval(buitenwerking);
+        clearInterval(aanzetten0());
+        clearInterval(knipperen());
+        stoplicht.src = "fotos/uit.png";
+        stoplicht1.src = "fotos/uit.png";
+        stoplicht2.src = "fotos/uit.png";
+        stoplicht3.src = "fotos/uit.png";
+
+    }
+
+    function maakRood() {
+
+        stopautos3 = true;
+        
+        stoplicht2.src = "fotos/rood.png";
+        stoplicht3.src = "fotos/rood.png";
+    }
+
+    function maakrood2() {
+        stopautos1 = true;
+        stopautos = true;
+        stoplicht1.src = "fotos/rood.png";
+        stoplicht.src = "fotos/rood.png";
+    }
+
+    function maakGeel() {
+        stopautos2 = false;
+        stopautos3= false;
+        stoplicht2.src = "fotos/oranje.png";
+        stoplicht3.src = "fotos/oranje.png";
+    }
+
+    function maakGeel2() {
+        stopautos1 = false;
+        stopautos = false;
+        stoplicht1.src = "fotos/oranje.png";
+        stoplicht.src = "fotos/oranje.png";
+
+    }
+
+    function maakGroen() {
+        stopautos2 = false;
+        stopautos = false;
+        stoplicht2.src = "fotos/groen.png";
+        stoplicht3.src = "fotos/groen.png";
+    }
+
+    function maakgroen2() {
+        stopautos1 = false;
+        stoplicht.src = "fotos/groen.png";
+        stoplicht1.src = "fotos/groen.png";
+
+
+        function zetUit() {
+
+        }
+    }
+
+    function diepte() {
+
+        document.getElementById("carrot").style.zIndex = "2";
+
+    }
+
+    function banana() {
+        document.getElementById("scrip").style.backgroundImage = "url(fotos/banana.gif)";
+        document.getElementById("scrip").style.zIndex = "-5";
+        document.getElementById("man").style.opacity = "0.00001";
+
+    }
+
+    function f() {
+
+        document.getElementById("cabrio1").console.log("hi");
+
+    }
+
+</script>
+</body>
+</html>
