@@ -1,1 +1,1 @@
-Lots of code but stil not functional :( 
+Traffic intersection simulated with js, css and html 
